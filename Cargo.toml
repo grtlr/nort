@@ -1,0 +1,15 @@
+[package]
+name = "nort"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+async-trait = "0.1"
+axum = "0.5"
+bee-inx = { git = "https://github.com/grtlr/bee.git", branch = "feat/bee-inx/packable" }
+futures = "0.3"
+rand = "0.8"
+thiserror = "1.0"
+tokio = { version = "1.21", features = [ "macros", "rt-multi-thread", "signal", "sync", "time" ] }
+tracing = "0.1"
+tracing-subscriber = "0.3"
