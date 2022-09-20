@@ -9,6 +9,10 @@ type Error = Box<dyn std::error::Error>;
 async fn main() -> Result<(), Error> {
     tracing_subscriber::fmt::init();
 
+    std::panic::set_hook(Box::new(|p| {
+        tracing::error!("{}", p);
+    }));
+
     let (mut shutdown_from_app, shutdown_notifier, shutdown_signal) = shutdown::shutdown_handles();
 
     let api_handle = tokio::spawn(api::start(shutdown_signal.clone()));
